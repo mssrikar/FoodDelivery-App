@@ -1,0 +1,27 @@
+{
+  "name": "namaste-react",
+  "version": "1.0.0",
+  "description": "This is Namaste React By Srikar ",
+  "homepage": "https://github.com/mssrikar/FoodDelivery-App#readme",
+  "bugs": {
+    "url": "https://github.com/mssrikar/FoodDelivery-App/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mssrikar/FoodDelivery-App.git"
+  },
+  "license": "ISC",
+  "author": "srikar",
+  "type": "commonjs",
+ 
+  "scripts": {
+    "test": "jest"
+  },
+  "devDependencies": {
+    "parcel": "^2.16.3"
+  },
+  "dependencies": {
+    "react": "^19.2.3",
+    "react-dom": "^19.2.3"
+  }
+}
