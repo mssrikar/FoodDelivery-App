@@ -38,40 +38,160 @@ import ReactDOM from "react-dom/client";
     )
 }
 
-const RestaurantCard = () => {
+const RestaurantCard = ({ resData }) => {
+    // ✅ DECLARE imgUrl FIRST
+    const imgUrl = `https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_208,h_208,c_fit/${resData.cloudinaryImageId}`;
+    
     return (
-        <div className="restaurant-card" style={{backgroundColor:"#f0f0f0"}}> 
-        <img className="res-logo"
-         alt="res-logo" src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_292,h_300/TopPicks2024/13293077E.png" />
-        <h3>Meghana Foods</h3>
-        <p>Biryani, North Indian, Chinese</p>
-        <span>4.5 ★  •  30 mins  •  ₹400 for two</span>
-        
-          </div>
+        <div className="restaurant-card" >
+            <div>
+            
+                <span>⭐ {resData.name}</span>
+                <span>• {resData.cuisines}</span>
+            </div>
+        </div>
     )
 }
+
+
+
+
+const resList = [
+    {
+        id: 1,
+        name: "KFC",
+        cuisines: ["Burgers", "Fast Food", "Chicken"],
+        rating: 4.2,
+        cloudinaryImageId: "https://www.google.com/url?sa=i&url=https%3A%2F%2Fglobal.kfc.com%2Fpress-releases%2Fkfc-r-begins-its-comeback-era-issues-come-back-call-to-fried-chicken-fans-with-free-bucket-on-us-offer&psig=AOvVaw33LogmQxERDbj6a7Yb-nA-&ust=1767104494833000&source=images&cd=vfe&opi=89978449&ved=2ahUKEwiT3Oqu_-KRAxWiwDgGHYePC10QjRx6BAgAEBo", // Real KFC
+        area: "Madhapur"
+    },
+    {
+        id: 2,
+        name: "Meghana Foods",
+        cuisines: ["Biryani", "North Indian"],
+        rating: 4.5,
+        cloudinaryImageId: "vph3r5m7k9n2p4q6r8s0", // Real Meghana Biryani
+        area: "Hitech City"
+    },
+    {
+        id: 3,
+        name: "Pizza Hut",
+        cuisines: ["Pizza", "Italian"],
+        rating: 4.1,
+        cloudinaryImageId: "t3u5v7w9x1y3z5a7b9c1", // Real Pizza Hut
+        area: "Gachibowli"
+    },
+    {
+        id: 4,
+        name: "Burger King",
+        cuisines: ["Burgers", "Fast Food"],
+        rating: 4.3,
+        cloudinaryImageId: "m4n6p8r0t2v4w6x8y0z2", // Real Burger King
+        area: "Kukatpally"
+    },
+    {
+        id: 5,
+        name: "Dominos Pizza",
+        cloudinaryImageId: "89xx90z1a2b3c4d5e6f7",
+        cuisines: ["Pizza", "Fast Food"],
+        rating: 4.0,
+        deliveryTime: "30-35 mins"
+    },
+    {
+        id: 6,
+        name: "McDonald's",
+        cloudinaryImageId: "gh12ij34kl56mn78op90",
+        cuisines: ["Burgers", "Fast Food"],
+        rating: 4.3,
+        deliveryTime: "20-25 mins"
+    },
+    {
+        id: 7,
+        name: "Paradise Biryani",
+        cloudinaryImageId: "qr34st56uv78wx90yz12",
+        cuisines: ["Biryani", "Hyderabadi"],
+        rating: 4.4,
+        deliveryTime: "30-35 mins"
+    },
+    {
+        id: 8,
+        name: "Chili's",
+        cloudinaryImageId: "ab56cd78ef90gh12ij34",
+        cuisines: ["American", "Mexican"],
+        rating: 4.2,
+        deliveryTime: "40-45 mins"
+    },
+    {
+        id: 9,
+        name: "Subway",
+        cloudinaryImageId: "kl78mn90op12qr34st56",
+        cuisines: ["Sandwich", "Healthy"],
+        rating: 4.1,
+        deliveryTime: "20-25 mins"
+    },
+    {
+        id: 10,
+        name: "Nirvana 9",
+        cloudinaryImageId: "uv90wx12yz34ab56cd78",
+        cuisines: ["Biryani", "Mughlai"],
+        rating: 4.6,
+        deliveryTime: "35-40 mins"
+    },
+    {
+        id: 11,
+        name: "Barbeque Nation",
+        cloudinaryImageId: "ef12gh34ij56kl78mn90",
+        cuisines: ["BBQ", "North Indian"],
+        rating: 4.3,
+        deliveryTime: "45-50 mins"
+    },
+    {
+        id: 12,
+        name: "Cafe Coffee Day",
+        cloudinaryImageId: "op34qr56st78uv90wx12",
+        cuisines: ["Beverages", "Snacks"],
+        rating: 4.0,
+        deliveryTime: "15-20 mins"
+    },
+    {
+        id: 13,
+        name: "Shakti Waters",
+        cloudinaryImageId: "yz56ab78cd90ef12gh34",
+        cuisines: ["South Indian", "Healthy"],
+        rating: 4.4,
+        deliveryTime: "25-30 mins"
+    },
+    {
+        id: 14,
+        name: "Punjab Grill",
+        cloudinaryImageId: "ij78kl90mn12op34qr56",
+        cuisines: ["North Indian", "Tandoor"],
+        rating: 4.2,
+        deliveryTime: "35-40 mins"
+    },
+    {
+        id: 15,
+        name: "Starbucks",
+        cloudinaryImageId: "st90uv12wx34yz56ab78",
+        cuisines: ["Beverages", "Desserts"],
+        rating: 4.3,
+        deliveryTime: "20-25 mins"
+    }
+];
 
 const Body = () => {
     return (
         <div className="body">
-            <div className="search">
-                    <p>Search</p>
+            <div className="search"><p>🔍 Search</p></div>
+            <div className="restaurant-container" style={{display: "flex", flexWrap: "wrap", gap: "20px"}}>
+                {resList.map((restaurant) => (
+                    <RestaurantCard key={restaurant.id} resData={restaurant} />
+                ))}
             </div>
-            <div className="restaurant-container">
-
-             {/* Restaurant Cards will go here */}
-             <RestaurantCard />
-             <RestaurantCard />
-             <RestaurantCard />
-             <RestaurantCard />
-             <RestaurantCard />
-             <RestaurantCard />
-
-            </div>
-
         </div>
     )
 }
+
 
 const AppLayout = () => {
     return (
